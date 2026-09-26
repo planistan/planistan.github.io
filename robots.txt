@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://planistan.github.io/sitemap.xml

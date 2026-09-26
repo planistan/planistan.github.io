@@ -1,0 +1,89 @@
+# Planistan
+
+> Public London planning-application datasets, published as static Parquet files.
+
+Planistan aggregates public council planning-register data. The files are snapshots,
+not authoritative live registers; follow each dataset's source link for official records.
+Fields may be null where a council omits data or detail-page enrichment is unavailable.
+
+## Discovery files
+
+- [Dataset manifest](https://planistan.github.io/datasets.json): JSON object keyed by borough; includes title, source, Parquet path, maturity, quality caveats, and completion metadata.
+- [Operations snapshot](https://planistan.github.io/ops.json): JSON snapshot of pipeline freshness and completion; operational fields may change.
+
+## Planning datasets
+
+- [barking_dagenham](https://planistan.github.io/boroughs/barking_dagenham/parsed/unified.parquet): Barking & Dagenham Planning Applications; source: London Borough of Barking & Dagenham (Council Direct). Caveat: Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.
+- [barnet](https://planistan.github.io/boroughs/barnet/parsed/unified.parquet): Barnet Planning Applications; source: London Borough of Barnet (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [bexley](https://planistan.github.io/boroughs/bexley/parsed/unified.parquet): Bexley Planning Applications; source: London Borough of Bexley (planning portal).
+- [brent](https://planistan.github.io/boroughs/brent/parsed/unified.parquet): Brent Planning Applications; source: London Borough of Brent (planning portal).
+- [bromley](https://planistan.github.io/boroughs/bromley/parsed/unified.parquet): Bromley Planning Applications; source: London Borough of Bromley (Arcus). Caveat: Arcus capture is live, but this borough is still marked experimental while coverage and enrich behavior are validated over broader runs.
+- [city_of_london](https://planistan.github.io/boroughs/city_of_london/parsed/unified.parquet): City of London Planning Applications; source: City of London Corporation (planning portal).
+- [croydon](https://planistan.github.io/boroughs/croydon/parsed/unified.parquet): Croydon Planning Applications; source: London Borough of Croydon (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [ealing](https://planistan.github.io/boroughs/ealing/parsed/unified.parquet): Ealing Planning Applications; source: London Borough of Ealing (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [enfield](https://planistan.github.io/boroughs/enfield/parsed/unified.parquet): Enfield Planning Applications; source: London Borough of Enfield (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [greenwich](https://planistan.github.io/boroughs/greenwich/parsed/unified.parquet): Greenwich Planning Applications; source: Royal Borough of Greenwich (planning portal).
+- [hackney](https://planistan.github.io/boroughs/hackney/parsed/unified.parquet): Hackney Planning Applications; source: London Borough of Hackney (Council Direct). Caveat: Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.
+- [hammersmith_fulham](https://planistan.github.io/boroughs/hammersmith_fulham/parsed/unified.parquet): Hammersmith & Fulham Planning Applications; source: London Borough of Hammersmith & Fulham (planning portal).
+- [haringey](https://planistan.github.io/boroughs/haringey/parsed/unified.parquet): Haringey Planning Applications; source: London Borough of Haringey (Arcus). Caveat: Arcus capture is live, but this borough is still marked experimental while coverage and enrich behavior are validated over broader runs.
+- [harrow](https://planistan.github.io/boroughs/harrow/parsed/unified.parquet): Harrow Planning Applications; source: London Borough of Harrow (Council Direct). Caveat: Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.
+- [kingston](https://planistan.github.io/boroughs/kingston/parsed/unified.parquet): Kingston Planning Applications; source: Royal Borough of Kingston upon Thames (planning portal).
+- [lambeth](https://planistan.github.io/boroughs/lambeth/parsed/unified.parquet): Lambeth Planning Applications; source: London Borough of Lambeth (planning portal).
+- [lewisham](https://planistan.github.io/boroughs/lewisham/parsed/unified.parquet): Lewisham Planning Applications; source: London Borough of Lewisham (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [newham](https://planistan.github.io/boroughs/newham/parsed/unified.parquet): Newham Planning Applications; source: London Borough of Newham (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [southwark](https://planistan.github.io/boroughs/southwark/parsed/unified.parquet): Southwark Planning Applications; source: London Borough of Southwark (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [sutton](https://planistan.github.io/boroughs/sutton/parsed/unified.parquet): Sutton Planning Applications; source: London Borough of Sutton (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+- [tower_hamlets](https://planistan.github.io/boroughs/tower_hamlets/parsed/unified.parquet): Tower Hamlets Planning Applications; source: London Borough of Tower Hamlets (planning portal).
+- [waltham_forest](https://planistan.github.io/boroughs/waltham_forest/parsed/unified.parquet): Waltham Forest Planning Applications; source: London Borough of Waltham Forest (Council Direct). Caveat: Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.
+- [westminster](https://planistan.github.io/boroughs/westminster/parsed/unified.parquet): Westminster Planning Applications; source: City of Westminster (planning portal). Caveat: Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.
+
+## Shared Parquet schema
+
+All borough files use the same nullable column model. Inspect the embedded Parquet
+schema before querying because additive columns and physical types can evolve.
+
+- Identity/source: `source_borough`, `reference`, `source_pdf`, `source_html`, `idox_keyval`, `portal_url`, `documents_url`, `weekly_url`.
+- Application: `location`, `proposal`, `drawings`, `ward`, `our_contact`, `planning_class`, `hmo`, `garden`.
+- Parties: `applicant_name`, `applicant_name_raw`, `applicant_agent`, `applicant_agent_raw`, `agent_name`, `agent_company`.
+- Dates: `registered`, `registered_raw`, `validated`, `validated_raw`, `decided`, `decided_raw`, `week`, `date_anomaly`.
+- Status: `status` is normalized; `status_raw` preserves the source value; `detail_enrich_state` describes detail lookup coverage.
+- Address/geography: `postcode`, `outcode`, `address_kind`, `building_number`, `street_name`, `parse_confidence`, `latitude`, `longitude`, `geocode_accuracy`, `geocoded_at`.
+
+Dates are stored as Parquet date/timestamp values where available. Text, coordinates,
+and flags are nullable. Treat `reference` as council-scoped; use (`source_borough`,
+`reference`) as the cross-dataset identifier. Consult `qualityStatus` in the manifest
+before comparing completeness across boroughs.
+
+## Fetch and parse
+
+Fetch the manifest first, resolve each root-relative `parquet` value against
+`https://planistan.github.io`, and use normal HTTPS GET requests. Example:
+
+```sh
+curl -L --fail -o barnet.parquet https://planistan.github.io/boroughs/barnet/parsed/unified.parquet
+duckdb -c "DESCRIBE SELECT * FROM read_parquet('barnet.parquet');"
+```
+
+DuckDB can query a file without a separate download:
+
+```sql
+SELECT source_borough, reference, registered, status, proposal
+FROM read_parquet('https://planistan.github.io/boroughs/barnet/parsed/unified.parquet')
+LIMIT 20;
+```
+
+Clients should use HTTP cache validators when polling, set bounded timeouts, and avoid
+repeatedly downloading every borough. Parquet readers include DuckDB, PyArrow, Polars,
+and pandas with a Parquet engine.
+
+## Usage and attribution
+
+Planistan is released under CC0-1.0. Attribution to Planistan is appreciated but not
+required. Retain the manifest's council source URL when redistributing extracts, check
+the originating council for authoritative records and any source-specific terms, and do
+not present inferred or incomplete fields as official council determinations.
+
+## Optional
+
+- [Planistan source repository](https://github.com/cottrell/planistan): scraper and UI source, schema implementation, and issue history.
+- [Human-facing site](https://planistan.github.io/): interactive browser UI for the same datasets.

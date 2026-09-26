@@ -1,0 +1,577 @@
+{
+  "barking_dagenham": {
+    "title": "Barking & Dagenham Planning Applications",
+    "sourceUrl": "https://online-befirst.lbbd.gov.uk/planning/index.html?fa=search",
+    "sourceLabel": "London Borough of Barking & Dagenham (Council Direct)",
+    "parquet": "/boroughs/barking_dagenham/parsed/unified.parquet",
+    "status": "dev",
+    "qualitySummary": "Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.",
+    "qualityStatus": {
+      "maturity": "Experimental connector: list/search capture works, but detail enrichment is still blocked.",
+      "enrichment": "Applicant and agent fields are limited to what the search results expose.",
+      "history": null,
+      "limitations": "Council Direct detail pages are blocked by AWS WAF.",
+      "geocoding": {
+        "rows": 0,
+        "geocoded_rows": 0,
+        "residual_rows": 0,
+        "residual_with_postcode": 0,
+        "coverage_pct": null,
+        "structural_ceiling": false,
+        "note": null
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 0 rows."
+  },
+  "barnet": {
+    "title": "Barnet Planning Applications",
+    "sourceUrl": "https://publicaccess.barnet.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Barnet (planning portal)",
+    "parquet": "/boroughs/barnet/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant values are sometimes placeholder strings like `.` on the source detail tabs.",
+      "geocoding": {
+        "rows": 3086,
+        "geocoded_rows": 0,
+        "residual_rows": 3086,
+        "residual_with_postcode": 2957,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "2957 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 3086 rows."
+  },
+  "bexley": {
+    "title": "Bexley Planning Applications",
+    "sourceUrl": "https://pa.bexley.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Bexley (planning portal)",
+    "parquet": "/boroughs/bexley/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 2996,
+        "geocoded_rows": 0,
+        "residual_rows": 2996,
+        "residual_with_postcode": 2757,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "2757 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 2996 rows."
+  },
+  "brent": {
+    "title": "Brent Planning Applications",
+    "sourceUrl": "https://pa.brent.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Brent (planning portal)",
+    "parquet": "/boroughs/brent/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 21407,
+        "geocoded_rows": 0,
+        "residual_rows": 21407,
+        "residual_with_postcode": 19264,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "19264 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 21407 rows."
+  },
+  "bromley": {
+    "title": "Bromley Planning Applications",
+    "sourceUrl": "https://planningaccess.bromley.gov.uk/pr/s/",
+    "sourceLabel": "London Borough of Bromley (Arcus)",
+    "parquet": "/boroughs/bromley/parsed/unified.parquet",
+    "status": "dev",
+    "qualitySummary": "Arcus capture is live, but this borough is still marked experimental while coverage and enrich behavior are validated over broader runs.",
+    "qualityStatus": {
+      "maturity": "Experimental Arcus connector with working capture but limited operational confidence so far.",
+      "enrichment": "Enrichment behavior still needs broader validation runs.",
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 10045,
+        "geocoded_rows": 0,
+        "residual_rows": 10045,
+        "residual_with_postcode": 9628,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "9628 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 10045 rows."
+  },
+  "city_of_london": {
+    "title": "City of London Planning Applications",
+    "sourceUrl": "https://www.planning2.cityoflondon.gov.uk/online-applications/",
+    "sourceLabel": "City of London Corporation (planning portal)",
+    "parquet": "/boroughs/city_of_london/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 6953,
+        "geocoded_rows": 0,
+        "residual_rows": 6953,
+        "residual_with_postcode": 6506,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "6506 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 6953 rows."
+  },
+  "croydon": {
+    "title": "Croydon Planning Applications",
+    "sourceUrl": "https://publicaccess3.croydon.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Croydon (planning portal)",
+    "parquet": "/boroughs/croydon/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant values are sometimes placeholder strings like `- - -` on the source detail tabs.",
+      "geocoding": {
+        "rows": 28364,
+        "geocoded_rows": 0,
+        "residual_rows": 28364,
+        "residual_with_postcode": 27752,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "27752 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 28364 rows."
+  },
+  "ealing": {
+    "title": "Ealing Planning Applications",
+    "sourceUrl": "https://pam.ealing.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Ealing (planning portal)",
+    "parquet": "/boroughs/ealing/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant values are sometimes placeholder strings like `-` on the source detail tabs.",
+      "geocoding": {
+        "rows": 24982,
+        "geocoded_rows": 0,
+        "residual_rows": 24982,
+        "residual_with_postcode": 24881,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "24881 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 24982 rows."
+  },
+  "enfield": {
+    "title": "Enfield Planning Applications",
+    "sourceUrl": "https://planningandbuildingcontrol.enfield.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Enfield (planning portal)",
+    "parquet": "/boroughs/enfield/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant values are sometimes placeholder strings like `Not Available` on the source detail tabs.",
+      "geocoding": {
+        "rows": 3659,
+        "geocoded_rows": 0,
+        "residual_rows": 3659,
+        "residual_with_postcode": 3510,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "3510 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 3659 rows."
+  },
+  "greenwich": {
+    "title": "Greenwich Planning Applications",
+    "sourceUrl": "https://planning.royalgreenwich.gov.uk/online-applications",
+    "sourceLabel": "Royal Borough of Greenwich (planning portal)",
+    "parquet": "/boroughs/greenwich/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 16134,
+        "geocoded_rows": 0,
+        "residual_rows": 16134,
+        "residual_with_postcode": 14274,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "14274 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 16134 rows."
+  },
+  "hackney": {
+    "title": "Hackney Planning Applications",
+    "sourceUrl": "https://developmentandhousing.hackney.gov.uk/planning/index.html?fa=search",
+    "sourceLabel": "London Borough of Hackney (Council Direct)",
+    "parquet": "/boroughs/hackney/parsed/unified.parquet",
+    "status": "dev",
+    "qualitySummary": "Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.",
+    "qualityStatus": {
+      "maturity": "Experimental connector: list/search capture works, but detail enrichment is still blocked.",
+      "enrichment": "Applicant and agent fields are limited to what the search results expose.",
+      "history": null,
+      "limitations": "Council Direct detail pages are blocked by AWS WAF.",
+      "geocoding": {
+        "rows": 0,
+        "geocoded_rows": 0,
+        "residual_rows": 0,
+        "residual_with_postcode": 0,
+        "coverage_pct": null,
+        "structural_ceiling": false,
+        "note": null
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 0 rows."
+  },
+  "hammersmith_fulham": {
+    "title": "Hammersmith & Fulham Planning Applications",
+    "sourceUrl": "https://public-access.lbhf.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Hammersmith & Fulham (planning portal)",
+    "parquet": "/boroughs/hammersmith_fulham/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 4396,
+        "geocoded_rows": 0,
+        "residual_rows": 4396,
+        "residual_with_postcode": 4103,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "4103 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 4396 rows."
+  },
+  "haringey": {
+    "title": "Haringey Planning Applications",
+    "sourceUrl": "https://publicregister.haringey.gov.uk/pr/s/",
+    "sourceLabel": "London Borough of Haringey (Arcus)",
+    "parquet": "/boroughs/haringey/parsed/unified.parquet",
+    "status": "dev",
+    "qualitySummary": "Arcus capture is live, but this borough is still marked experimental while coverage and enrich behavior are validated over broader runs.",
+    "qualityStatus": {
+      "maturity": "Experimental Arcus connector with working capture but limited operational confidence so far.",
+      "enrichment": "Enrichment behavior still needs broader validation runs.",
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 7805,
+        "geocoded_rows": 0,
+        "residual_rows": 7805,
+        "residual_with_postcode": 7550,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "7550 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 7805 rows."
+  },
+  "harrow": {
+    "title": "Harrow Planning Applications",
+    "sourceUrl": "https://planningsearch.harrow.gov.uk/planning/index.html?fa=search",
+    "sourceLabel": "London Borough of Harrow (Council Direct)",
+    "parquet": "/boroughs/harrow/parsed/unified.parquet",
+    "status": "dev",
+    "qualitySummary": "Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.",
+    "qualityStatus": {
+      "maturity": "Experimental connector: list/search capture works, but detail enrichment is still blocked.",
+      "enrichment": "Applicant and agent fields are limited to what the search results expose.",
+      "history": null,
+      "limitations": "Council Direct detail pages are blocked by AWS WAF.",
+      "geocoding": {
+        "rows": 0,
+        "geocoded_rows": 0,
+        "residual_rows": 0,
+        "residual_with_postcode": 0,
+        "coverage_pct": null,
+        "structural_ceiling": false,
+        "note": null
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 0 rows."
+  },
+  "kingston": {
+    "title": "Kingston Planning Applications",
+    "sourceUrl": "https://publicaccess.kingston.gov.uk/online-applications/",
+    "sourceLabel": "Royal Borough of Kingston upon Thames (planning portal)",
+    "parquet": "/boroughs/kingston/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 3217,
+        "geocoded_rows": 0,
+        "residual_rows": 3217,
+        "residual_with_postcode": 3084,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "3084 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 3217 rows."
+  },
+  "lambeth": {
+    "title": "Lambeth Planning Applications",
+    "sourceUrl": "https://planning.lambeth.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Lambeth (planning portal)",
+    "parquet": "/boroughs/lambeth/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 19569,
+        "geocoded_rows": 0,
+        "residual_rows": 19569,
+        "residual_with_postcode": 18155,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "18155 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 19569 rows."
+  },
+  "lewisham": {
+    "title": "Lewisham Planning Applications",
+    "sourceUrl": "https://planning.lewisham.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Lewisham (planning portal)",
+    "parquet": "/boroughs/lewisham/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant values are sometimes placeholder strings like `-` on the source detail tabs.",
+      "geocoding": {
+        "rows": 2989,
+        "geocoded_rows": 0,
+        "residual_rows": 2989,
+        "residual_with_postcode": 2855,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "2855 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 2989 rows."
+  },
+  "newham": {
+    "title": "Newham Planning Applications",
+    "sourceUrl": "https://pa.newham.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Newham (planning portal)",
+    "parquet": "/boroughs/newham/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant names can be truncated placeholders such as honorific-only values in the source detail tabs.",
+      "geocoding": {
+        "rows": 2896,
+        "geocoded_rows": 0,
+        "residual_rows": 2896,
+        "residual_with_postcode": 2632,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "2632 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 2896 rows."
+  },
+  "southwark": {
+    "title": "Southwark Planning Applications",
+    "sourceUrl": "https://planning.southwark.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Southwark (planning portal)",
+    "parquet": "/boroughs/southwark/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant values are sometimes placeholder strings like `.` on the source detail tabs.",
+      "geocoding": {
+        "rows": 3229,
+        "geocoded_rows": 0,
+        "residual_rows": 3229,
+        "residual_with_postcode": 2787,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "2787 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 3229 rows."
+  },
+  "sutton": {
+    "title": "Sutton Planning Applications",
+    "sourceUrl": "https://planningregister.sutton.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Sutton (planning portal)",
+    "parquet": "/boroughs/sutton/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant values are sometimes placeholder strings like `.` on the source detail tabs.",
+      "geocoding": {
+        "rows": 2951,
+        "geocoded_rows": 0,
+        "residual_rows": 2951,
+        "residual_with_postcode": 2866,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "2866 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 2951 rows."
+  },
+  "tower_hamlets": {
+    "title": "Tower Hamlets Planning Applications",
+    "sourceUrl": "https://development.towerhamlets.gov.uk/online-applications/",
+    "sourceLabel": "London Borough of Tower Hamlets (planning portal)",
+    "parquet": "/boroughs/tower_hamlets/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": null,
+    "qualityStatus": {
+      "maturity": null,
+      "enrichment": null,
+      "history": null,
+      "limitations": null,
+      "geocoding": {
+        "rows": 12999,
+        "geocoded_rows": 0,
+        "residual_rows": 12999,
+        "residual_with_postcode": 10179,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "10179 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 12999 rows."
+  },
+  "waltham_forest": {
+    "title": "Waltham Forest Planning Applications",
+    "sourceUrl": "https://placehub.walthamforest.gov.uk/planning/index.html?fa=search",
+    "sourceLabel": "London Borough of Waltham Forest (Council Direct)",
+    "parquet": "/boroughs/waltham_forest/parsed/unified.parquet",
+    "status": "dev",
+    "qualitySummary": "Search capture works, but Council Direct detail pages are still blocked by AWS WAF so applicant and agent fields remain limited.",
+    "qualityStatus": {
+      "maturity": "Experimental connector: list/search capture works, but detail enrichment is still blocked.",
+      "enrichment": "Applicant and agent fields are limited to what the search results expose.",
+      "history": null,
+      "limitations": "Council Direct detail pages are blocked by AWS WAF.",
+      "geocoding": {
+        "rows": 0,
+        "geocoded_rows": 0,
+        "residual_rows": 0,
+        "residual_with_postcode": 0,
+        "coverage_pct": null,
+        "structural_ceiling": false,
+        "note": null
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 0 rows."
+  },
+  "westminster": {
+    "title": "Westminster Planning Applications",
+    "sourceUrl": "https://idoxpa.westminster.gov.uk/online-applications/",
+    "sourceLabel": "City of Westminster (planning portal)",
+    "parquet": "/boroughs/westminster/parsed/unified.parquet",
+    "status": "prod",
+    "qualitySummary": "Idox capture is stable, but some applicant fields are placeholder source values and are intentionally normalized away.",
+    "qualityStatus": {
+      "maturity": "Production-ready Idox connector with stable historical coverage.",
+      "enrichment": "Detail enrichment is working; many missing applicant values are source placeholders rather than missed extraction.",
+      "history": null,
+      "limitations": "Applicant names are often placeholder values such as `_` in cached detail tabs rather than true parser misses.",
+      "geocoding": {
+        "rows": 2530,
+        "geocoded_rows": 0,
+        "residual_rows": 2530,
+        "residual_with_postcode": 2387,
+        "coverage_pct": 0.0,
+        "structural_ceiling": false,
+        "note": "2387 ungeocoded rows still have postcode and may be recoverable."
+      }
+    },
+    "completionState": "done",
+    "completionMessage": "Enriched 2530 rows."
+  }
+}
