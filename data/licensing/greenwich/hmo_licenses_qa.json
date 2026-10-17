@@ -1,0 +1,23 @@
+{
+  "extracted_at": "2026-09-11T15:38:09.883656+00:00",
+  "extract_method": "pdfplumber table geometry (find_tables + fixed column x-bounds)",
+  "source_pdf": "/home/cottrell/dev/planistan/data/raw/licensing/greenwich/observations/6bec5dcced169904e40e8de98844ddefa63dac30ff76e9dd5371a260381efb9a.pdf",
+  "total_rows": 4686,
+  "unique_licence_ref": 4686,
+  "counts_by_licence_type": {
+    "Selective licence": 3160,
+    "Mandatory HMO": 807,
+    "Additional HMO": 719
+  },
+  "pct_max_occupants_zero_overall": 0.1212,
+  "pct_max_occupants_zero_by_type": {
+    "Additional HMO": 0.3449,
+    "Mandatory HMO": 0.2937,
+    "Selective licence": 0.0263
+  },
+  "self_agent_duplicate_count": 0,
+  "short_or_empty_holder_count": 0,
+  "missing_postcode_count": 0,
+  "duplicate_licence_ref_count": 0,
+  "outlier_sample": []
+}
